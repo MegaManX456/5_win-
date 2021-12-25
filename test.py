@@ -8,18 +8,7 @@
 '''
 from time import perf_counter as clock
 a = clock()
-moves =    [[7,7],  
-            [8,7],  
-            [8,8],  
-            [8,6],  
-            [5,5],  
-            [6,5],  
-            [10,10],
-            [7,9],  
-            [9,9],  
-            [11,11],
-            [6,6]
-            ]
+moves =[[3, 5], [8, 7], [5, 10], [4, 10], [8, 10], [6, 11], [8, 8], [10, 9], [9, 9], [10, 10], [7, 7], [10, 8], [9, 8], [10, 7], [10, 11], [10, 5], [6, 6], [10, 6], [5, 5]]
 for i in range(len(moves)):
     for j in range(2):
         moves[i][j]+=1
@@ -72,8 +61,12 @@ def find_win(win_lines,player):
             if line[i] in player:
                 lst.append(line[i])
             else:
-                break
+                break 
         if len(lst)==5:
+            rx = line[1][0] - line[0][0]
+            ry = line[1][1] - line[0][1]
+            if [line[0][0]-rx,line[0][1]-rx] or [line[0][0]+rx,line[0][1]+rx]  in player:
+                continue
             return lst
         
 def helo(moves):
